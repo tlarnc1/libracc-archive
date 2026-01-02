@@ -138,10 +138,8 @@
                 </button>
             </div>
 
-            <!-- JavaScriptでここにリストが生成されます -->
-            <div id="dynamicFileList" class="space-y-6">
-                <!-- リストの中身はJSで制御 -->
-            </div>
+            <!-- JavaScriptでここにリストが生成されます (中身を空にしておく) -->
+            <div id="dynamicFileList" class="space-y-6"></div>
             
             <div class="mt-16 border-t-2 border-black pt-8 text-center">
                 <div class="inline-block border-2 border-black p-4 bg-white">
@@ -225,7 +223,8 @@
 
         // 3. ファイルリストの生成関数（無骨スタイル）
         function renderFileList() {
-            if (dynamicFileList.innerHTML.trim() !== "") return;
+            // 修正: HTMLコメントなどが含まれていても、要素ノードがなければ実行するように変更
+            if (dynamicFileList.children.length > 0) return;
 
             let html = '';
             fileData.forEach(file => {
