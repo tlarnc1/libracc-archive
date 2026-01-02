@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibracC (IATB) コンテンツ配布ポータル</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        
+        /* フェードインアニメーション */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards; /* 時間を短くしてキビキビさせる */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 無骨さを出すためのユーティリティ */
+        .brutal-border {
+            border: 2px solid #000;
+        }
+        .brutal-btn {
+            transition: all 0.1s;
+        }
+        .brutal-btn:active {
+            transform: translate(2px, 2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-black min-h-screen flex flex-col">
+
+    <!-- ヘッダー (黒基調・直角) -->
+    <header class="bg-black text-white py-6 border-b-4 border-black">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400 text-xs md:text-sm font-bold tracking-widest uppercase mb-1 font-mono">Institute of Academic TARAbit (IATB)</p>
+            <h1 class="text-2xl md:text-4xl font-black tracking-tighter uppercase">LibracC ARCHIVE</h1>
+            <p class="mt-2 text-gray-400 text-sm font-bold">コンテンツ配布ポータル / DATA PORTAL</p>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-4xl">
+
+        <!-- ▼▼▼ 規約・同意画面 (初期表示) ▼▼▼ -->
+        <div id="agreementSection">
+            
+            <div class="mb-10">
+                <h2 class="text-2xl font-black mb-4 uppercase tracking-tight flex items-center">
+                    <span class="w-4 h-4 bg-black mr-3"></span>
+                    ABOUT SYSTEM
+                </h2>
+                <div class="bg-white border-2 border-black p-6">
+                    <p class="text-base leading-relaxed font-medium">
+                        本システムは、<strong>LibracC (Institute of Academic TARAbit)</strong> が管理する学習用教材データの配布ポータルです。<br>
+                        全てのデータは著作権法上の要件を満たしており、以下のライセンス規約に同意することでダウンロード可能です。
+                    </p>
+                </div>
+                
+                <div class="mt-6 bg-black text-white p-4 font-bold text-center border-2 border-black">
+                    ⚠ ACCESS WARNING: ライセンス規約への同意が必要です
+                </div>
+            </div>
+
+            <!-- ライセンス契約ボックス (無骨デザイン) -->
+            <div class="border-4 border-black bg-white mb-10">
+                <div class="bg-gray-100 px-6 py-4 border-b-4 border-black flex items-center justify-between">
+                    <span class="font-black text-lg uppercase tracking-wider">LICENSE AGREEMENT</span>
+                    <span class="bg-black text-white text-xs px-2 py-1 font-bold font-mono">CC BY-SA 4.0</span>
+                </div>
+                
+                <div class="p-8">
+                    <div class="flex flex-col items-center justify-center mb-8 pb-8 border-b-2 border-dashed border-gray-400">
+                        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank" class="hover:opacity-70 transition-opacity grayscale hover:grayscale-0">
+                            <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="CC BY-SA 4.0" width="120">
+                        </a>
+                        <p class="mt-4 font-black text-xl text-center uppercase">Creative Commons BY-SA 4.0</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 text-sm font-medium">
+                        <div>
+                            <h4 class="font-black mb-3 border-b-2 border-black inline-block">PERMISSIONS (許可)</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <span class="bg-black text-white w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">✔</span>
+                                    <span><strong>共有・再配布:</strong> 営利・非営利を問わずコピー可。</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="bg-black text-white w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">✔</span>
+                                    <span><strong>改変・翻案:</strong> 内容の修正、追記、加工が可能。</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-black mb-3 border-b-2 border-black inline-block">CONDITIONS (条件)</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start text-red-700 font-bold">
+                                    <span class="bg-red-700 text-white w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">!</span>
+                                    <span><strong>クレジット表示:</strong> 「作成：LibracC (IATB)」を明記すること。</span>
+                                </li>
+                                <li class="flex items-start text-red-700 font-bold">
+                                    <span class="bg-red-700 text-white w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">!</span>
+                                    <span><strong>ライセンス継承:</strong> 改変版も同じ「CC BY-SA」で公開すること。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-8 border-t-4 border-black text-center">
+                    <label class="flex items-center justify-center space-x-4 cursor-pointer select-none mb-8 group bg-white border-2 border-gray-400 p-4 hover:border-black transition-colors max-w-lg mx-auto">
+                        <input type="checkbox" id="agreeCheckbox" class="w-6 h-6 text-black border-2 border-black focus:ring-0 rounded-none cursor-pointer">
+                        <span class="text-black font-bold text-lg group-hover:underline">上記ライセンス条件に同意する</span>
+                    </label>
+
+                    <button id="showFilesBtn" class="inline-block w-full md:w-auto px-12 py-5 text-xl font-black text-gray-400 bg-gray-200 border-2 border-gray-300 cursor-not-allowed pointer-events-none uppercase tracking-widest transition-all">
+                        ENTER ARCHIVE
+                    </button>
+                    <p class="mt-4 text-xs font-mono text-gray-500 uppercase">Status: <span id="btnStatus">Waiting for agreement...</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- ▲▲▲ 規約・同意画面 ここまで ▲▲▲ -->
+
+
+        <!-- ▼▼▼ ファイル一覧画面 (初期状態は非表示) ▼▼▼ -->
+        <div id="fileListSection" class="hidden">
+            <div class="flex items-center justify-between mb-8 border-b-4 border-black pb-4">
+                <h3 class="text-3xl font-black uppercase tracking-tight">
+                    File Index
+                </h3>
+                <!-- 戻るボタン -->
+                <button onclick="location.reload()" class="font-mono text-sm font-bold underline hover:bg-black hover:text-white px-2 py-1">
+                    &lt; RETURN TO TOP
+                </button>
+            </div>
+
+            <!-- JavaScriptでここにリストが生成されます -->
+            <div id="dynamicFileList" class="space-y-6">
+                <!-- リストの中身はJSで制御 -->
+            </div>
+            
+            <div class="mt-16 border-t-2 border-black pt-8 text-center">
+                <div class="inline-block border-2 border-black p-4 bg-white">
+                    <p class="text-xs font-mono font-bold mb-2 uppercase">License Information</p>
+                    <div class="flex justify-center items-center gap-4">
+                        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="CC BY-SA" class="grayscale w-24">
+                        <span class="text-xs font-bold">LibracC (IATB)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ▲▲▲ ファイル一覧画面 ここまで ▲▲▲ -->
+
+    </main>
+
+    <footer class="bg-black text-white py-12 text-center text-sm border-t-8 border-gray-800 mt-auto">
+        <p class="font-mono mb-2">SYSTEM: LibracC CONTENT DELIVERY NETWORK</p>
+        <p class="font-bold opacity-60">&copy; 2024 LibracC / Institute of Academic TARAbit (IATB). All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // ★★★ ファイル設定エリア (ここを編集) ★★★
+        // ==========================================
+        const fileData = [
+            {
+                title: "実力完成模擬試験 中学校数学 水準V",
+                description: "問題冊子のみ。",
+                date: "2026.01.01",
+                size: "unknown",
+                type: "PDF",
+                id: "MOCK-MathJHS",
+                path: "./files/mathv_libracc_260102_JHSV.pdf"
+            },
+            {
+                title: "実力完成模擬試験 中学校数学 水準V 解答・解説",
+                description: "解答・解説",
+                date: "2026.01.02",
+                size: "unknown",
+                type: "PDF",
+                id: "MATH-AE",
+                path: "./files/mathv_answer.pdf"
+            }
+        ];
+
+        // ==========================================
+        // ロジック部分
+        // ==========================================
+        const checkbox = document.getElementById('agreeCheckbox');
+        const showFilesBtn = document.getElementById('showFilesBtn');
+        const btnStatus = document.getElementById('btnStatus');
+        const agreementSection = document.getElementById('agreementSection');
+        const fileListSection = document.getElementById('fileListSection');
+        const dynamicFileList = document.getElementById('dynamicFileList');
+
+        // 1. チェックボックスの制御
+        checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                // 有効化
+                showFilesBtn.classList.remove('bg-gray-200', 'text-gray-400', 'border-gray-300', 'cursor-not-allowed', 'pointer-events-none');
+                showFilesBtn.classList.add('bg-black', 'text-white', 'border-black', 'hover:bg-white', 'hover:text-black', 'cursor-pointer', 'pointer-events-auto');
+                btnStatus.textContent = "Ready to access.";
+                btnStatus.classList.add('text-green-600', 'font-bold');
+            } else {
+                // 無効化
+                showFilesBtn.classList.add('bg-gray-200', 'text-gray-400', 'border-gray-300', 'cursor-not-allowed', 'pointer-events-none');
+                showFilesBtn.classList.remove('bg-black', 'text-white', 'border-black', 'hover:bg-white', 'hover:text-black', 'cursor-pointer', 'pointer-events-auto');
+                btnStatus.textContent = "Waiting for agreement...";
+                btnStatus.classList.remove('text-green-600', 'font-bold');
+            }
+        });
+
+        // 2. ボタンクリック時の動作
+        showFilesBtn.addEventListener('click', function() {
+            agreementSection.style.display = 'none';
+            fileListSection.classList.remove('hidden');
+            fileListSection.classList.add('fade-in');
+            renderFileList();
+            window.scrollTo(0, 0);
+        });
+
+        // 3. ファイルリストの生成関数（無骨スタイル）
+        function renderFileList() {
+            if (dynamicFileList.innerHTML.trim() !== "") return;
+
+            let html = '';
+            fileData.forEach(file => {
+                html += `
+                <div class="border-2 border-black bg-white p-0 hover:bg-gray-50 transition-colors group">
+                    <div class="flex flex-col md:flex-row items-stretch">
+                        <!-- 左側: メタデータ -->
+                        <div class="bg-black text-white p-4 md:w-32 flex flex-col justify-center items-center text-center flex-shrink-0">
+                            <span class="font-mono text-xs opacity-70 mb-1">TYPE</span>
+                            <span class="font-black text-xl">${file.type}</span>
+                            <span class="w-8 h-1 bg-white my-2"></span>
+                            <span class="font-mono text-xs">${file.size}</span>
+                        </div>
+                        
+                        <!-- 中央: 内容 -->
+                        <div class="p-6 flex-grow border-b-2 md:border-b-0 md:border-r-2 border-black border-dashed">
+                            <div class="flex items-center mb-2">
+                                <span class="font-mono text-xs font-bold bg-gray-200 px-2 py-1 mr-3 border border-black">ID: ${file.id}</span>
+                                <span class="font-mono text-xs text-gray-500">${file.date}</span>
+                            </div>
+                            <h4 class="text-xl font-black text-black mb-2 leading-tight">${file.title}</h4>
+                            <p class="text-gray-700 text-sm font-medium">${file.description}</p>
+                        </div>
+
+                        <!-- 右側: アクション -->
+                        <div class="p-6 flex items-center justify-center md:w-48 flex-shrink-0 bg-gray-50">
+                            <a href="${file.path}" target="_blank" class="block w-full text-center py-3 border-2 border-black font-black uppercase text-sm bg-white hover:bg-black hover:text-white transition-all brutal-btn shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+            dynamicFileList.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
